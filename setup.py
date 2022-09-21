@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
   name='trawler',
-  url='coming',
+  url='https://github.com/aalling93/ais_trawler',
   author='Kristian Soerensen',
   author_email='kaaso@space.dtu.dk',
   packages=['trawler',],
