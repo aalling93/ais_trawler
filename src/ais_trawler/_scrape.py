@@ -4,18 +4,17 @@ from bs4 import BeautifulSoup
 from ._utilities import *
 
 
-def mmsi_to_data_myshiptracking(mmsi: int):
+def mmsi_to_data_myshiptracking(mmsi: int,CRAWL_DELAY:int=5):
     """getting data from myshiptracking...
     You need a crawl delay of 5 for myshiptracking.com!
     """
-    CRAWL_DELAY = 5
     site = f"https://www.myshiptracking.com/vessels/mmsi-{mmsi}"
     try:
         time_delay(CRAWL_DELAY)
         page = requests.get(site)
     except:
-        print(f"Connection refused by the server.. Sleeping for 5 sec")
-        time_delay(CRAWL_DELAY+2)
+        print(f"Connection refused by the server.. Sleeping for {CRAWL_DELAY} sec")
+        time_delay(CRAWL_DELAY)
         pass
 
     soup = BeautifulSoup(page.content, "html.parser")
@@ -115,15 +114,14 @@ def mmsi_to_data_myshiptracking(mmsi: int):
     )
 
 
-def mmsi_to_data_marinevesseltraffic(mmsi: int):
+def mmsi_to_data_marinevesseltraffic(mmsi: int,CRAWL_DELAY:int=5):
     """getting data from marinevesseltraffic.."""
-    CRAWL_DELAY = 5
     site = f"https://www.marinevesseltraffic.com/vessels?page=1&vessel={mmsi}&sort=none&direction=none&flag=none"
     try:
         time_delay(CRAWL_DELAY)
         page = requests.get(site)
     except:
-        print(f"Connection refused by the server.. Sleeping for 5 sec")
+        print(f"Connection refused by the server.. Sleeping for {CRAWL_DELAY} sec")
         time_delay(CRAWL_DELAY)
         pass
 

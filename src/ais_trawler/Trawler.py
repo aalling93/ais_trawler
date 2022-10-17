@@ -3,7 +3,7 @@ from ._get import *
 from ._scrape import *
 
 
-class Trawler:
+class Trawler():
     """ """
 
     def __init__(self):
